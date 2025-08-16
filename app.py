@@ -3,9 +3,13 @@ import os
 from datetime import datetime
 import random
 
-# 챗봇 기능 임시 비활성화 (배포 문제 해결을 위해)
-CHATBOT_AVAILABLE = False
-print("Chatbot functionality temporarily disabled for deployment.")
+# 챗봇 import 오류 방지를 위한 조건부 import
+try:
+    from saju_chatbot import chatbot
+    CHATBOT_AVAILABLE = True
+except ImportError:
+    print("Warning: Chatbot module not available. Running without chatbot functionality.")
+    CHATBOT_AVAILABLE = False
 
 app = Flask(__name__)
 app.secret_key = 'saju_library_secret_key'
