@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수목선생의 사주 도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 배경 음악 컨트롤 -->
+    <div class="music-control">
+        <button id="musicToggle" class="music-btn">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="bgMusic" loop>
+            <source src="{{ url_for('static', filename='audio/background.mp3') }}" type="audio/mpeg">
+        </audio>
+    </div>
+
+
+
+    <!-- 상단 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+                    <div class="logo">
+            <img src="{{ url_for('static', filename='img/로고1.png') }}" alt="수목선생의 사주이야기" class="logo-image">
+            <div class="logo-text">
+                <h1>수목선생의 사주이야기</h1>
+                <p>전문사주가의 글, 칼럼, 사주 지식</p>
+            </div>
+        </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="active">홈</a></li>
+                <li><a href="/library">사주 도서관</a></li>
+                <li><a href="/reservation">사주 예약 & 주문</a></li>
+                <li><a href="/visit">방문 안내</a></li>
+                <li><a href="/about">소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 공지사항 패널 (고정) -->
+    <div class="notice-panel">
+        <h3><i class="fas fa-bullhorn"></i> 공지사항</h3>
+        <div class="notice-content">
+            {% for notice in notices %}
+            <div class="notice-item {{ notice.type }}">
+                <h4>{{ notice.title }}</h4>
+                <p>{{ notice.content }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 메인 비주얼 -->
+        <section class="hero-section">
+            <div class="library-visual">
+                <div class="bookshelf">
+                    <div class="book" data-category="basic">
+                        <div class="book-spine">사주 기초</div>
+                    </div>
+                    <div class="book" data-category="daily">
+                        <div class="book-spine">오늘의 운세</div>
+                    </div>
+                    <div class="book" data-category="history">
+                        <div class="book-spine">역사 속 사주</div>
+                    </div>
+                    <div class="book" data-category="cases">
+                        <div class="book-spine">상담 사례</div>
+                    </div>
+                    <div class="book" data-category="philosophy">
+                        <div class="book-spine">사주 철학</div>
+                    </div>
+                </div>
+                
+                <div class="quote-display">
+                    <div class="quote-container">
+                        <h2>오늘의 사주 한 구절</h2>
+                        <div class="quote-text">
+                            <p>"{{ daily_quote }}"</p>
+                        </div>
+                        <div class="quote-decoration">
+                            <span class="decoration-line"></span>
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 퀵 메뉴 -->
+        <section class="quick-menu">
+            <div class="menu-grid">
+                <div class="menu-item" onclick="location.href='/reservation'">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>사주 상담 예약</h3>
+                    <p>전문가와의 1:1 상담</p>
+                </div>
+                <div class="menu-item" onclick="location.href='/library'">
+                    <i class="fas fa-book-open"></i>
+                    <h3>사주 도서관</h3>
+                    <p>다양한 사주 지식과 칼럼</p>
+                </div>
+                <div class="menu-item" onclick="showDailyFortune()">
+                    <i class="fas fa-star"></i>
+                    <h3>오늘의 운세</h3>
+                    <p>간단한 운세 확인하기</p>
+                </div>
+                <div class="menu-item" onclick="location.href='/visit'">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>방문 안내</h3>
+                    <p>위치 및 교통편 안내</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 오늘의 운세 모달 -->
+        <div id="fortuneModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>오늘의 운세</h2>
+                <div id="fortuneResult" class="fortune-result">
+                    <div class="fortune-item">
+                        <h3>행운의 색</h3>
+                        <p id="fortuneColor">-</p>
+                    </div>
+                    <div class="fortune-item">
+                        <h3>행운의 숫자</h3>
+                        <p id="fortuneNumber">-</p>
+                    </div>
+                    <div class="fortune-item">
+                        <h3>오늘의 조언</h3>
+                        <p id="fortuneAdvice">-</p>
+                    </div>
+                </div>
+                <button onclick="getDailyFortune()" class="fortune-btn">다시 뽑기</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 하단 푸터 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='img/로고1.png') }}" alt="수목선생의 사주이야기" class="footer-logo-image">
+                <div>
+                    <h4>수목선생의 사주이야기</h4>
+                    <p>전통 사주와 현대적 해석의 조화</p>
+                </div>
+            </div>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>📞 010-1234-5678</p>
+                <p>📧 saju@library.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>영업시간</h4>
+                <p>화-일: 10:00 - 19:00</p>
+                <p>월요일 휴무</p>
+            </div>
+            <div class="footer-section">
+                <h4>SNS</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-blog"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 수목선생의 사주 도서관. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 챗봇 UI -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span>상담 문의</span>
+        </div>
+        
+        <div id="chatbot-panel" class="chatbot-panel">
+            <div class="chatbot-header">
+                <h3><i class="fas fa-robot"></i> 수목선생 상담도우미</h3>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        안녕하세요! 수목선생의 사주이야기 상담도우미입니다. 
+                        상담 예약이나 궁금한 점이 있으시면 언제든 말씀해주세요! 😊
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="메시지를 입력하세요..." maxlength="200">
+                <button id="chatbot-send" class="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>

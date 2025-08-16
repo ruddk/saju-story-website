@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 도서관 - 색상 옵션</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color.css') }}">
+</head>
+<body>
+    <div class="color-options">
+        <h1 class="page-title">사주 도서관 색상 옵션</h1>
+        <p class="subtitle">원하시는 색상 팔레트를 선택해주세요</p>
+        
+        <!-- 옵션 1: 민트 + 살구톤 -->
+        <div class="color-option" id="option1">
+            <h2 class="option-title">옵션 1: 민트 + 살구톤 (상큼한 느낌)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #7FB069;"></div>
+                    <div class="color-info">
+                        <span class="color-name">메인 컬러</span>
+                        <span class="color-code">#7FB069</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #F4A261;"></div>
+                    <div class="color-info">
+                        <span class="color-name">보조 컬러</span>
+                        <span class="color-code">#F4A261</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #E76F51;"></div>
+                    <div class="color-info">
+                        <span class="color-name">액센트 컬러</span>
+                        <span class="color-code">#E76F51</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>미리보기</h3>
+                <div class="preview-card" style="background: linear-gradient(135deg, #7FB069 0%, #F4A261 100%);">
+                    <div class="preview-content">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                        <button class="preview-btn" style="background: #E76F51;">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(1)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 2: 라벤더 + 피치톤 -->
+        <div class="color-option" id="option2">
+            <h2 class="option-title">옵션 2: 라벤더 + 피치톤 (부드러운 느낌)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #9B7EDE;"></div>
+                    <div class="color-info">
+                        <span class="color-name">메인 컬러</span>
+                        <span class="color-code">#9B7EDE</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #F7CAC9;"></div>
+                    <div class="color-info">
+                        <span class="color-name">보조 컬러</span>
+                        <span class="color-code">#F7CAC9</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #E8A87C;"></div>
+                    <div class="color-info">
+                        <span class="color-name">액센트 컬러</span>
+                        <span class="color-code">#E8A87C</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>미리보기</h3>
+                <div class="preview-card" style="background: linear-gradient(135deg, #9B7EDE 0%, #F7CAC9 100%);">
+                    <div class="preview-content">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                        <button class="preview-btn" style="background: #E8A87C;">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(2)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 3: 세이지 + 크림톤 -->
+        <div class="color-option" id="option3">
+            <h2 class="option-title">옵션 3: 세이지 + 크림톤 (자연스러운 느낌)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #87A96B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">메인 컬러</span>
+                        <span class="color-code">#87A96B</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #F5E6D3;"></div>
+                    <div class="color-info">
+                        <span class="color-name">보조 컬러</span>
+                        <span class="color-code">#F5E6D3</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #D2691E;"></div>
+                    <div class="color-info">
+                        <span class="color-name">액센트 컬러</span>
+                        <span class="color-code">#D2691E</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>미리보기</h3>
+                <div class="preview-card" style="background: linear-gradient(135deg, #87A96B 0%, #F5E6D3 100%);">
+                    <div class="preview-content">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                        <button class="preview-btn" style="background: #D2691E;">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(3)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 4: 혼합 색상 (라벤더 + 세이지 + 현재색상) -->
+        <div class="color-option" id="option4">
+            <h2 class="option-title">옵션 4: 라벤더 + 세이지 + 베이지 (조화로운 느낌)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #8B7D6B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">메인 컬러</span>
+                        <span class="color-code">#8B7D6B</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #A89B8A;"></div>
+                    <div class="color-info">
+                        <span class="color-name">보조 컬러</span>
+                        <span class="color-code">#A89B8A</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #9B7EDE;"></div>
+                    <div class="color-info">
+                        <span class="color-name">액센트 컬러</span>
+                        <span class="color-code">#9B7EDE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>미리보기</h3>
+                <div class="preview-card" style="background: linear-gradient(135deg, #8B7D6B 0%, #A89B8A 100%);">
+                    <div class="preview-content">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                        <button class="preview-btn" style="background: #9B7EDE;">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(4)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 5: 이미지 색감 반영 (라벤더-피치 + 세이지-크림 + 베이지) -->
+        <div class="color-option" id="option5">
+            <h2 class="option-title">옵션 5: 라벤더-피치 + 세이지-크림 + 베이지 (이미지 색감)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: linear-gradient(135deg, #9B7EDE 0%, #F7CAC9 100%);"></div>
+                    <div class="color-info">
+                        <span class="color-name">라벤더-피치</span>
+                        <span class="color-code">#9B7EDE → #F7CAC9</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: linear-gradient(135deg, #87A96B 0%, #F5E6D3 100%);"></div>
+                    <div class="color-info">
+                        <span class="color-name">세이지-크림</span>
+                        <span class="color-code">#87A96B → #F5E6D3</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #8B7D6B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">베이지</span>
+                        <span class="color-code">#8B7D6B</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>미리보기</h3>
+                <div class="preview-card" style="background: linear-gradient(135deg, #9B7EDE 0%, #F7CAC9 50%, #87A96B 100%);">
+                    <div class="preview-content">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                        <button class="preview-btn" style="background: #8B7D6B;">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(5)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 6: 페이지/섹션별 색상 적용 -->
+        <div class="color-option" id="option6">
+            <h2 class="option-title">옵션 6: 페이지/섹션별 색상 적용 (이미지 톤)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #9B7EDE;"></div>
+                    <div class="color-info">
+                        <span class="color-name">라벤더 톤</span>
+                        <span class="color-code">#9B7EDE</span>
+                        <span class="color-usage">메인 페이지</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #87A96B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">세이지 톤</span>
+                        <span class="color-code">#87A96B</span>
+                        <span class="color-usage">사주 도서관</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #8B7D6B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">베이지 톤</span>
+                        <span class="color-code">#8B7D6B</span>
+                        <span class="color-usage">예약/대기실</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>페이지별 색상 적용</h3>
+                <div class="page-preview-grid">
+                    <div class="page-preview" style="background: #9B7EDE;">
+                        <h4>메인 페이지</h4>
+                        <p>라벤더 톤</p>
+                    </div>
+                    <div class="page-preview" style="background: #87A96B;">
+                        <h4>사주 도서관</h4>
+                        <p>세이지 톤</p>
+                    </div>
+                    <div class="page-preview" style="background: #8B7D6B;">
+                        <h4>예약/대기실</h4>
+                        <p>베이지 톤</p>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(6)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 7: 한 페이지 내 3톤 통합 적용 -->
+        <div class="color-option" id="option7">
+            <h2 class="option-title">옵션 7: 한 페이지 내 3톤 통합 (이미지 톤)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: linear-gradient(135deg, #9B7EDE 0%, #8A6FD1 100%);"></div>
+                    <div class="color-info">
+                        <span class="color-name">타이틀 컬러</span>
+                        <span class="color-code">#9B7EDE → #8A6FD1</span>
+                        <span class="color-usage">제목, 헤더</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: linear-gradient(135deg, #87A96B 0%, #7A9A5E 100%);"></div>
+                    <div class="color-info">
+                        <span class="color-name">문단 컬러</span>
+                        <span class="color-code">#87A96B → #7A9A5E</span>
+                        <span class="color-usage">본문, 설명</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: linear-gradient(135deg, #8B7D6B 0%, #7A6D5A 100%);"></div>
+                    <div class="color-info">
+                        <span class="color-name">액센트 컬러</span>
+                        <span class="color-code">#8B7D6B → #7A6D5A</span>
+                        <span class="color-usage">버튼, 강조</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>한 페이지 내 3톤 적용</h3>
+                <div class="unified-preview">
+                    <div class="preview-header" style="background: linear-gradient(135deg, #9B7EDE 0%, #8A6FD1 100%);">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-text" style="color: #87A96B;">
+                            <h5>오늘의 사주 한 구절</h5>
+                            <p>인생의 길을 밝히는 지혜의 등불이 되어드리겠습니다. 전통 사주의 깊은 통찰력을 통해 여러분의 운명을 탐구해보세요.</p>
+                        </div>
+                        <div class="preview-actions">
+                            <button class="preview-btn" style="background: linear-gradient(135deg, #8B7D6B 0%, #7A6D5A 100%);">예약하기</button>
+                            <button class="preview-btn" style="background: linear-gradient(135deg, #8B7D6B 0%, #7A6D5A 100%);">도서관 보기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(7)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 8: 세이지+크림 + 페이지별 적용 (통합 버전) -->
+        <div class="color-option" id="option8">
+            <h2 class="option-title">옵션 8: 세이지+크림 + 페이지별 적용 (통합 버전)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #87A96B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">세이지 톤</span>
+                        <span class="color-code">#87A96B</span>
+                        <span class="color-usage">메인 페이지</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #F5E6D3;"></div>
+                    <div class="color-info">
+                        <span class="color-name">크림 톤</span>
+                        <span class="color-code">#F5E6D3</span>
+                        <span class="color-usage">사주 도서관</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #D2691E;"></div>
+                    <div class="color-info">
+                        <span class="color-name">테라코타 톤</span>
+                        <span class="color-code">#D2691E</span>
+                        <span class="color-usage">예약/대기실</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>페이지별 세이지+크림 적용</h3>
+                <div class="page-preview-grid">
+                    <div class="page-preview" style="background: #87A96B;">
+                        <h4>메인 페이지</h4>
+                        <p>세이지 톤</p>
+                        <small>자연스럽고 차분한 첫인상</small>
+                    </div>
+                    <div class="page-preview" style="background: #F5E6D3; color: #8B4513;">
+                        <h4>사주 도서관</h4>
+                        <p>크림 톤</p>
+                        <small>따뜻하고 편안한 읽기 공간</small>
+                    </div>
+                    <div class="page-preview" style="background: #D2691E;">
+                        <h4>예약/대기실</h4>
+                        <p>테라코타 톤</p>
+                        <small>활기차고 신뢰감 있는 공간</small>
+                    </div>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(8)">이 색상 선택</button>
+        </div>
+
+        <!-- 옵션 9: 옵션3 + 옵션5 각각 적용 -->
+        <div class="color-option" id="option9">
+            <h2 class="option-title">옵션 9: 옵션3 + 옵션5 각각 적용 (세이지+크림 + 이미지 색감)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #87A96B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">세이지 톤</span>
+                        <span class="color-code">#87A96B</span>
+                        <span class="color-usage">메인 페이지 (옵션3)</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #F5E6D3;"></div>
+                    <div class="color-info">
+                        <span class="color-name">크림 톤</span>
+                        <span class="color-code">#F5E6D3</span>
+                        <span class="color-usage">사주 도서관 (옵션3)</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #8B7D6B;"></div>
+                    <div class="color-info">
+                        <span class="color-name">베이지 톤</span>
+                        <span class="color-code">#8B7D6B</span>
+                        <span class="color-usage">예약/대기실 (옵션5)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>옵션3 + 옵션5 각각 적용</h3>
+                <div class="page-preview-grid">
+                    <div class="page-preview" style="background: #87A96B;">
+                        <h4>메인 페이지</h4>
+                        <p>세이지 톤</p>
+                        <small>옵션3 - 자연스럽고 차분한 느낌</small>
+                    </div>
+                    <div class="page-preview" style="background: #F5E6D3; color: #8B4513;">
+                        <h4>사주 도서관</h4>
+                        <p>크림 톤</p>
+                        <small>옵션3 - 따뜻하고 편안한 느낌</small>
+                    </div>
+                    <div class="page-preview" style="background: #8B7D6B;">
+                        <h4>예약/대기실</h4>
+                        <p>베이지 톤</p>
+                        <small>옵션5 - 이미지 색감의 안정감</small>
+                    </div>
+                </div>
+                <div class="option-description">
+                    <p><strong>옵션3 (세이지+크림)</strong>: 메인 페이지와 사주 도서관에 적용</p>
+                    <p><strong>옵션5 (이미지 색감)</strong>: 예약/대기실에 적용</p>
+                </div>
+            </div>
+            <button class="select-btn" onclick="selectOption(9)">이 색상 선택</button>
+        </div>
+
+        <!-- 현재 색상 (비교용) -->
+        <div class="color-option current-option" id="current">
+            <h2 class="option-title">현재 색상 (비교용)</h2>
+            <div class="color-palette">
+                <div class="color-sample main-color">
+                    <div class="color-box" style="background: #8b7d6b;"></div>
+                    <div class="color-info">
+                        <span class="color-name">메인 컬러</span>
+                        <span class="color-code">#8b7d6b</span>
+                    </div>
+                </div>
+                <div class="color-sample secondary-color">
+                    <div class="color-box" style="background: #a89b8a;"></div>
+                    <div class="color-info">
+                        <span class="color-name">보조 컬러</span>
+                        <span class="color-code">#a89b8a</span>
+                    </div>
+                </div>
+                <div class="color-sample accent-color">
+                    <div class="color-box" style="background: #d4c4b0;"></div>
+                    <div class="color-info">
+                        <span class="color-name">액센트 컬러</span>
+                        <span class="color-code">#d4c4b0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-section">
+                <h3>미리보기</h3>
+                <div class="preview-card" style="background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);">
+                    <div class="preview-content">
+                        <h4>사주 도서관</h4>
+                        <p>전통과 현대가 만나는 공간</p>
+                        <button class="preview-btn" style="background: #d4c4b0;">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="current-label">현재 적용된 색상</div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/color.js') }}"></script>
+</body>
+</html>

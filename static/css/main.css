@@ -1,0 +1,953 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif KR', serif;
+    background: 
+        linear-gradient(315deg, rgba(42, 31, 26, 0.4) 0%, rgba(26, 21, 18, 0.4) 100%),
+        url('../img/library-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 책방 조명 효과 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 배경 음악 컨트롤 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--accent-color);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-light);
+}
+
+.music-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+
+
+/* 네비게이션 */
+.main-nav {
+    background: var(--gradient-accent);
+    padding: 1rem 0;
+    box-shadow: var(--shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.logo-text h1 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.logo-text p {
+    color: #d4c4b0;
+    font-size: 0.9rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: #f8f6f2;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* 공지사항 패널 - 책방 느낌 */
+.notice-panel {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%) perspective(1000px) rotateY(5deg);
+    width: 300px;
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 246, 242, 0.95) 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(139, 125, 107, 0.2);
+    z-index: 50;
+    transition: transform 0.3s ease;
+}
+
+.notice-panel:hover {
+    transform: translateY(-50%) perspective(1000px) rotateY(2deg) scale(1.02);
+}
+
+.notice-panel h3 {
+    color: #746551;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.notice-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+}
+
+.notice-item.success {
+    background: rgba(76, 175, 80, 0.1);
+    border-left-color: #4caf50;
+}
+
+.notice-item.info {
+    background: rgba(33, 150, 243, 0.1);
+    border-left-color: #2196f3;
+}
+
+.notice-item.event {
+    background: rgba(255, 193, 7, 0.1);
+    border-left-color: #ffc107;
+}
+
+.notice-item h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #4a4a4a;
+}
+
+.notice-item p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 메인 콘텐츠 - 책방 느낌 */
+.main-content {
+    margin-right: 350px;
+    padding: 3rem;
+    max-width: 1200px;
+    position: relative;
+}
+
+/* 책방 입체감 효과 */
+.main-content::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 350px;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, 
+            rgba(0, 0, 0, 0.1) 0%, 
+            transparent 5%, 
+            transparent 95%, 
+            rgba(0, 0, 0, 0.1) 100%
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 히어로 섹션 */
+.hero-section {
+    margin-bottom: 3rem;
+}
+
+.library-visual {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    min-height: 400px;
+}
+
+/* 책장 - 입체적 책방 느낌 */
+.bookshelf {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.bookshelf:hover {
+    transform: perspective(1000px) rotateY(-3deg) scale(1.02);
+}
+
+.bookshelf::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    border-radius: 15px;
+}
+
+.book {
+    width: 45px;
+    height: 200px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+    transform: perspective(500px) rotateY(-2deg);
+    border: 1px solid rgba(139, 125, 107, 0.2);
+}
+
+/* 각 책별 색상 */
+.book:nth-child(1) {
+    background: 
+        linear-gradient(180deg, #8B4513 0%, #A0522D 100%),
+        repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 15px,
+            rgba(0, 0, 0, 0.05) 15px,
+            rgba(0, 0, 0, 0.05) 16px
+        );
+}
+
+.book:nth-child(2) {
+    background: 
+        linear-gradient(180deg, #2E8B57 0%, #3CB371 100%),
+        repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 15px,
+            rgba(0, 0, 0, 0.05) 15px,
+            rgba(0, 0, 0, 0.05) 16px
+        );
+}
+
+.book:nth-child(3) {
+    background: 
+        linear-gradient(180deg, #4682B4 0%, #5F9EA0 100%),
+        repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 15px,
+            rgba(0, 0, 0, 0.05) 15px,
+            rgba(0, 0, 0, 0.05) 16px
+        );
+}
+
+.book:nth-child(4) {
+    background: 
+        linear-gradient(180deg, #8A2BE2 0%, #9370DB 100%),
+        repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 15px,
+            rgba(0, 0, 0, 0.05) 15px,
+            rgba(0, 0, 0, 0.05) 16px
+        );
+}
+
+.book:nth-child(5) {
+    background: 
+        linear-gradient(180deg, #CD853F 0%, #DEB887 100%),
+        repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 15px,
+            rgba(0, 0, 0, 0.05) 15px,
+            rgba(0, 0, 0, 0.05) 16px
+        );
+}
+
+.book:hover {
+    transform: perspective(500px) rotateY(0deg) translateY(-15px) scale(1.08);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.book::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.book-spine {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* 인용구 표시 */
+.quote-display {
+    flex: 1;
+}
+
+.quote-container {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 246, 242, 0.8) 100%);
+    padding: 3.5rem;
+    border-radius: 25px;
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(139, 125, 107, 0.15);
+    position: relative;
+    text-align: center;
+    transform: perspective(800px) rotateY(2deg);
+    transition: transform 0.3s ease;
+}
+
+.quote-container:hover {
+    transform: perspective(800px) rotateY(0deg) scale(1.02);
+}
+
+.quote-container h2 {
+    color: #8b7d6b;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.quote-text p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.quote-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.decoration-line {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #8b7d6b 50%, transparent 100%);
+}
+
+.quote-decoration i {
+    color: #8b7d6b;
+    font-size: 1.5rem;
+}
+
+/* 퀵 메뉴 */
+.quick-menu {
+    margin-bottom: 3rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.menu-item {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 246, 242, 0.8) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(139, 125, 107, 0.15);
+    position: relative;
+    transform: perspective(600px) rotateY(-1deg);
+    overflow: hidden;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.menu-item:hover {
+    transform: perspective(600px) rotateY(0deg) translateY(-8px) scale(1.03);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.menu-item i {
+    font-size: 2.5rem;
+    color: #8b7d6b;
+    margin-bottom: 1rem;
+}
+
+.menu-item h3 {
+    color: #4a4a4a;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #8b7d6b;
+}
+
+.close:hover {
+    color: #4a4a4a;
+}
+
+.modal-content h2 {
+    color: #8b7d6b;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fortune-result {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.fortune-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(139, 125, 107, 0.05);
+    border-radius: 10px;
+}
+
+.fortune-item h3 {
+    color: #8b7d6b;
+    margin-bottom: 0.5rem;
+}
+
+.fortune-item p {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+.fortune-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fortune-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(139, 125, 107, 0.3);
+}
+
+/* 푸터 */
+.main-footer {
+    background: linear-gradient(135deg, #5d4e47 0%, #6b5d56 100%);
+    color: #f8f6f2;
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-section h4 {
+    color: #d4c4b0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-section p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #d4c4b0;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #f8f6f2;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(212, 196, 176, 0.3);
+}
+
+.footer-bottom p {
+    color: #d4c4b0;
+    font-size: 0.8rem;
+}
+
+/* 챗봇 스타일 */
+.chatbot-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.chatbot-toggle {
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(139, 125, 107, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.chatbot-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(139, 125, 107, 0.4);
+}
+
+.chatbot-toggle i {
+    font-size: 1.2rem;
+}
+
+.chatbot-panel {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatbot-panel.active {
+    display: flex;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.bot-message {
+    justify-content: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    border-radius: 18px 18px 4px 18px;
+}
+
+.bot-message .message-content {
+    background: rgba(139, 125, 107, 0.1);
+    color: #4a4a4a;
+    border-radius: 18px 18px 18px 4px;
+    border: 1px solid rgba(139, 125, 107, 0.2);
+}
+
+.chatbot-input-container {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(139, 125, 107, 0.1);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid rgba(139, 125, 107, 0.2);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+#chatbot-input:focus {
+    border-color: #8b7d6b;
+}
+
+.chatbot-send {
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.chatbot-send:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(139, 125, 107, 0.3);
+}
+
+.chatbot-send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .logo-text h1 {
+        font-size: 1.5rem;
+        color: white;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .notice-panel {
+        position: static;
+        width: 100%;
+        margin-bottom: 2rem;
+        transform: none !important;
+    }
+    
+    .main-content {
+        margin-right: 0;
+        padding: 1rem;
+    }
+    
+    .main-content::before {
+        display: none;
+    }
+    
+    .library-visual {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    /* 반응형 챗봇 */
+    .chatbot-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .chatbot-panel {
+        width: 300px;
+        height: 400px;
+        bottom: 70px;
+    }
+    
+    .chatbot-toggle span {
+        display: none;
+    }
+    
+    .chatbot-toggle {
+        padding: 15px;
+        border-radius: 50%;
+    }
+    
+    .bookshelf {
+        width: 100%;
+    }
+    
+    .book {
+        width: 100%;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quote-container,
+.menu-item,
+.notice-panel {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* 책장 애니메이션 */
+.book {
+    animation: slideIn 0.6s ease-out;
+}
+
+.book:nth-child(1) { animation-delay: 0.1s; }
+.book:nth-child(2) { animation-delay: 0.2s; }
+.book:nth-child(3) { animation-delay: 0.3s; }
+.book:nth-child(4) { animation-delay: 0.4s; }
+.book:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+    from { 
+        opacity: 0; 
+        transform: translateX(-50px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}

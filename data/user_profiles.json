@@ -1,0 +1,62 @@
+{
+  "users": {},
+  "conversation_history": [
+    {
+      "user_id": "anonymous",
+      "message": "안녕하세요",
+      "timestamp": "2025-08-14T02:59:09.991496",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "제이름은 임경아입니다.",
+      "timestamp": "2025-08-14T02:59:19.325250",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "제 이름을 기억하나요",
+      "timestamp": "2025-08-14T02:59:30.997211",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "2인얼마",
+      "timestamp": "2025-08-14T02:59:46.929890",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "상담",
+      "timestamp": "2025-08-14T03:00:32.060897",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "이름 임경아 연락처 010",
+      "timestamp": "2025-08-14T03:00:51.604304",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "이름은 임경아입니다.",
+      "timestamp": "2025-08-14T03:01:07.787585",
+      "user_info": {}
+    },
+    {
+      "user_id": "anonymous",
+      "message": "예약되었나요",
+      "timestamp": "2025-08-14T03:01:12.685556",
+      "user_info": {}
+    }
+  ],
+  "learning_data": {
+    "common_questions": {
+      "얼마": 1,
+      "연락처": 1,
+      "예약": 1
+    },
+    "user_preferences": {},
+    "consultation_patterns": {}
+  }
+}

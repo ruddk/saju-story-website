@@ -1,0 +1,600 @@
+/* 방문 안내 페이지 스타일 */
+
+.visit-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* 메인 레이아웃 */
+.main-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* 왼쪽: 제목 섹션 */
+.title-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    height: fit-content;
+}
+
+/* 페이지 제목 */
+.page-title {
+    color: #8b7d6b;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.page-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* 오른쪽: 콘텐츠 섹션 */
+.content-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+}
+
+/* 위치 정보 */
+.location-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.map-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+}
+
+.map-placeholder {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: rgba(139, 125, 107, 0.05);
+    border-radius: 10px;
+    border: 2px dashed rgba(139, 125, 107, 0.3);
+}
+
+.map-placeholder i {
+    font-size: 4rem;
+    color: #8b7d6b;
+    margin-bottom: 1rem;
+}
+
+.map-placeholder h3 {
+    color: #4a4a4a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.map-placeholder p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.map-btn {
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.map-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 125, 107, 0.3);
+}
+
+.address-info {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+}
+
+.address-info h2 {
+    color: #8b7d6b;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.address-details p {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(139, 125, 107, 0.05);
+    border-radius: 8px;
+}
+
+.address-details i {
+    color: #8b7d6b;
+    font-size: 1.2rem;
+    width: 20px;
+}
+
+/* 교통편 안내 */
+.transportation-section {
+    margin-bottom: 4rem;
+}
+
+.transportation-section h2 {
+    color: #8b7d6b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.transport-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.transport-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.transport-icon {
+    margin-bottom: 1.5rem;
+}
+
+.transport-icon i {
+    font-size: 3rem;
+    color: #8b7d6b;
+}
+
+.transport-card h3 {
+    color: #4a4a4a;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.transport-details p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.transport-details strong {
+    color: #8b7d6b;
+}
+
+/* 영업시간 */
+.hours-section {
+    margin-bottom: 4rem;
+}
+
+.hours-section h2 {
+    color: #8b7d6b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.hours-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+}
+
+.hours-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.day-hours {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(139, 125, 107, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #8b7d6b;
+}
+
+.day {
+    color: #4a4a4a;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.hours {
+    color: #8b7d6b;
+    font-weight: 500;
+}
+
+.hours.closed {
+    color: #e74c3c;
+}
+
+.hours-note {
+    background: rgba(139, 125, 107, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.hours-note p {
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hours-note i {
+    color: #8b7d6b;
+}
+
+/* 주변 시설 */
+.nearby-section {
+    margin-bottom: 4rem;
+}
+
+.nearby-section h2 {
+    color: #8b7d6b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.nearby-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nearby-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.nearby-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.nearby-icon i {
+    font-size: 2.5rem;
+    color: #8b7d6b;
+}
+
+.nearby-card h3 {
+    color: #4a4a4a;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.nearby-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nearby-card li {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.nearby-card li::before {
+    content: '•';
+    color: #8b7d6b;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* 방문 팁 */
+.tips-section {
+    margin-bottom: 4rem;
+}
+
+.tips-section h2 {
+    color: #8b7d6b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.tip-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.tip-card i {
+    font-size: 2.5rem;
+    color: #8b7d6b;
+    margin-bottom: 1rem;
+}
+
+.tip-card h3 {
+    color: #4a4a4a;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.tip-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 연락처 */
+.contact-section {
+    margin-bottom: 3rem;
+}
+
+.contact-section h2 {
+    color: #8b7d6b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.contact-item i {
+    font-size: 2rem;
+    color: #8b7d6b;
+}
+
+.contact-item h3 {
+    color: #4a4a4a;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-item p {
+    color: #8b7d6b;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.contact-item small {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(139, 125, 107, 0.1);
+}
+
+.contact-form h3 {
+    color: #8b7d6b;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid rgba(139, 125, 107, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8b7d6b;
+    box-shadow: 0 0 0 3px rgba(139, 125, 107, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #8b7d6b 0%, #a89b8a 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 125, 107, 0.3);
+}
+
+/* 애니메이션 */
+.transport-card,
+.nearby-card,
+.tip-card,
+.contact-item {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.transport-card:nth-child(1) { animation-delay: 0.1s; }
+.transport-card:nth-child(2) { animation-delay: 0.2s; }
+.transport-card:nth-child(3) { animation-delay: 0.3s; }
+.transport-card:nth-child(4) { animation-delay: 0.4s; }
+
+.nearby-card:nth-child(1) { animation-delay: 0.1s; }
+.nearby-card:nth-child(2) { animation-delay: 0.2s; }
+.nearby-card:nth-child(3) { animation-delay: 0.3s; }
+.nearby-card:nth-child(4) { animation-delay: 0.4s; }
+
+.tip-card:nth-child(1) { animation-delay: 0.1s; }
+.tip-card:nth-child(2) { animation-delay: 0.2s; }
+.tip-card:nth-child(3) { animation-delay: 0.3s; }
+.tip-card:nth-child(4) { animation-delay: 0.4s; }
+
+.contact-item:nth-child(1) { animation-delay: 0.1s; }
+.contact-item:nth-child(2) { animation-delay: 0.2s; }
+.contact-item:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .title-section {
+        order: 1;
+    }
+    
+    .content-section {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .visit-content {
+        padding: 1rem;
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .content-section {
+        padding: 1.5rem;
+    }
+}
+

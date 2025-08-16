@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 예약 & 주문 - 수목선생의 사주 도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 상단 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+                    <div class="logo">
+            <img src="{{ url_for('static', filename='img/로고1.png') }}" alt="수목선생의 사주이야기" class="logo-image">
+            <div class="logo-text">
+                <h1>수목선생의 사주이야기</h1>
+                <p>전문사주가의 글, 칼럼, 사주 지식</p>
+            </div>
+        </div>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/library">사주 도서관</a></li>
+                <li><a href="/reservation" class="active">사주 예약 & 주문</a></li>
+                <li><a href="/visit">방문 안내</a></li>
+                <li><a href="/about">소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="reservation-content">
+        <div class="main-layout">
+            <!-- 왼쪽: 제목 -->
+            <div class="title-section">
+                <h1 class="page-title">사주 예약 & 주문</h1>
+                <p class="page-subtitle">전문가와의 1:1 상담을 통해 인생의 방향을 찾아보세요</p>
+            </div>
+
+            <!-- 중앙: 예약 폼 -->
+            <div class="form-section">
+                <div class="form-container">
+                    <div class="form-layout">
+                        <!-- 왼쪽: 기본 정보 -->
+                        <div class="form-left">
+                            <h2>기본 정보</h2>
+                            <form id="reservationForm" class="reservation-form">
+                                <div class="form-field">
+                                    <label for="name">이름 *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="phone">연락처 *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email">이메일</label>
+                                    <input type="email" id="email" name="email">
+                                </div>
+                                <div class="form-field">
+                                    <label for="birthDate">생년월일 *</label>
+                                    <input type="date" id="birthDate" name="birthDate" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="consultationType">상담 방법 *</label>
+                                    <select id="consultationType" name="consultationType" required>
+                                        <option value="">선택하세요</option>
+                                        <option value="visit">방문 상담</option>
+                                        <option value="phone">전화 상담</option>
+                                        <option value="video">영상 상담</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label for="questions">상담 내용</label>
+                                    <textarea id="questions" name="questions" rows="3" placeholder="상담하고 싶은 내용을 간단히 적어주세요..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 오른쪽: 예약 날짜/시간 -->
+                        <div class="form-right">
+                            <h2>예약 날짜 & 시간</h2>
+                            <div class="calendar-section">
+                                <div class="calendar-container">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav" onclick="previousMonth()">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <h4 id="currentMonth">2024년 1월</h4>
+                                        <button type="button" class="calendar-nav" onclick="nextMonth()">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="calendar-grid" id="calendarGrid">
+                                        <!-- 동적으로 생성됩니다 -->
+                                    </div>
+                                </div>
+                                <div class="time-slots">
+                                    <h4>가능한 시간</h4>
+                                    <div class="time-grid" id="timeGrid">
+                                        <!-- 동적으로 생성됩니다 -->
+                                    </div>
+                                </div>
+                                <div class="pricing-info">
+                                    <div class="price-item">
+                                        <span>60분 상담</span>
+                                        <span>50,000원</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 제출 버튼 -->
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn" form="reservationForm">
+                            <i class="fas fa-calendar-check"></i>
+                            예약 완료
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽: 상담 안내 -->
+            <div class="info-section">
+                <h2>상담 안내</h2>
+                <div class="info-cards-vertical">
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>상담 시간</h3>
+                        <p>화-일: 10:00 - 19:00<br>월요일 휴무</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>방문 상담</h3>
+                        <p>서울시 강남구 테헤란로 123<br>사주도서관 2층</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>전화 상담</h3>
+                        <p>010-1234-5678<br>사전 예약 필수</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-video"></i>
+                        <h3>영상 상담</h3>
+                        <p>Zoom, Skype 등<br>편한 방법으로 진행</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 예약 확인 모달 -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content confirmation-modal">
+            <span class="close">&times;</span>
+            <div class="confirmation-content">
+                <i class="fas fa-check-circle"></i>
+                <h2>예약이 완료되었습니다!</h2>
+                <div id="reservationDetails" class="reservation-details">
+                    <!-- 예약 상세 정보가 표시됩니다 -->
+                </div>
+                <div class="confirmation-actions">
+                    <button onclick="closeConfirmation()" class="close-btn">확인</button>
+                    <button onclick="printConfirmation()" class="print-btn">
+                        <i class="fas fa-print"></i> 인쇄
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단 푸터 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>수목선생의 사주 도서관</h4>
+                <p>전통 사주와 현대적 해석의 조화</p>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>📞 010-1234-5678</p>
+                <p>📧 saju@library.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>영업시간</h4>
+                <p>화-일: 10:00 - 19:00</p>
+                <p>월요일 휴무</p>
+            </div>
+            <div class="footer-section">
+                <h4>SNS</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-blog"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 수목선생의 사주 도서관. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/reservation.js') }}"></script>
+</body>
+</html>
+

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 도서관 - 수목선생의 사주 도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/library.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 상단 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+                    <div class="logo">
+            <img src="{{ url_for('static', filename='img/로고1.png') }}" alt="수목선생의 사주이야기" class="logo-image">
+            <div class="logo-text">
+                <h1>수목선생의 사주이야기</h1>
+                <p>전문사주가의 글, 칼럼, 사주 지식</p>
+            </div>
+        </div>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/library" class="active">사주 도서관</a></li>
+                <li><a href="/reservation">사주 예약 & 주문</a></li>
+                <li><a href="/visit">방문 안내</a></li>
+                <li><a href="/about">소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="library-content">
+        <!-- 페이지 헤더 -->
+        <header class="library-header">
+            <h1>사주 도서관</h1>
+            <p>전통 사주 지식과 현대적 해석을 담은 다양한 글들을 만나보세요</p>
+        </header>
+
+        <!-- 카테고리 필터 -->
+        <section class="category-filter">
+            <div class="filter-container">
+                <button class="filter-btn active" data-category="all">전체</button>
+                <button class="filter-btn" data-category="basic">사주 기초</button>
+                <button class="filter-btn" data-category="daily">오늘의 운세</button>
+                <button class="filter-btn" data-category="history">역사 속 사주</button>
+                <button class="filter-btn" data-category="cases">상담 사례</button>
+                <button class="filter-btn" data-category="philosophy">사주 철학</button>
+            </div>
+        </section>
+
+        <!-- 콘텐츠 그리드 -->
+        <section class="content-grid">
+            <!-- 사주 기초 -->
+            <article class="content-card" data-category="basic">
+                <div class="card-image">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="card-content">
+                    <h3>사주란 무엇인가?</h3>
+                    <p>사주의 기본 개념과 원리를 쉽게 설명합니다. 천간, 지지, 십이지신의 의미부터 시작하여...</p>
+                    <div class="card-meta">
+                        <span class="read-time"><i class="fas fa-clock"></i> 5분 읽기</span>
+                        <span class="category">사주 기초</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="read-btn" onclick="readArticle('saju-basic')">읽기</button>
+                </div>
+            </article>
+
+            <article class="content-card" data-category="basic">
+                <div class="card-image">
+                    <i class="fas fa-yin-yang"></i>
+                </div>
+                <div class="card-content">
+                    <h3>음양오행의 이해</h3>
+                    <p>음양과 오행의 기본 원리와 사주에서의 활용법을 알아봅니다. 자연의 순환과 인간의 운명...</p>
+                    <div class="card-meta">
+                        <span class="read-time"><i class="fas fa-clock"></i> 8분 읽기</span>
+                        <span class="category">사주 기초</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="read-btn" onclick="readArticle('yin-yang')">읽기</button>
+                </div>
+            </article>
+
+            <!-- 오늘의 운세 -->
+            <article class="content-card" data-category="daily">
+                <div class="card-image">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="card-content">
+                    <h3>2024년 운세 총정리</h3>
+                    <p>2024년의 전체적인 운세와 각 띠별 운세를 정리했습니다. 올해의 주요 변화와 기회를...</p>
+                    <div class="card-meta">
+                        <span class="read-time"><i class="fas fa-clock"></i> 12분 읽기</span>
+                        <span class="category">오늘의 운세</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="read-btn" onclick="readArticle('2024-fortune')">읽기</button>
+                </div>
+            </article>
+
+            <!-- 역사 속 사주 -->
+            <article class="content-card" data-category="history">
+                <div class="card-image">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="card-content">
+                    <h3>조선시대 사주 이야기</h3>
+                    <p>조선시대의 유명한 사주가들과 그들의 예언이 어떻게 역사에 영향을 미쳤는지 알아봅니다...</p>
+                    <div class="card-meta">
+                        <span class="read-time"><i class="fas fa-clock"></i> 15분 읽기</span>
+                        <span class="category">역사 속 사주</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="read-btn" onclick="readArticle('joseon-saju')">읽기</button>
+                </div>
+            </article>
+
+            <!-- 상담 사례 -->
+            <article class="content-card" data-category="cases">
+                <div class="card-image">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="card-content">
+                    <h3>직장인 A씨의 사주 상담</h3>
+                    <p>30대 직장인 A씨의 사주를 통해 본 직장에서의 인간관계와 승진에 대한 조언을 담았습니다...</p>
+                    <div class="card-meta">
+                        <span class="read-time"><i class="fas fa-clock"></i> 10분 읽기</span>
+                        <span class="category">상담 사례</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="read-btn" onclick="readArticle('case-study-1')">읽기</button>
+                </div>
+            </article>
+
+            <!-- 사주 철학 -->
+            <article class="content-card" data-category="philosophy">
+                <div class="card-image">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="card-content">
+                    <h3>운명과 자유의지</h3>
+                    <p>사주에서 말하는 운명과 인간의 자유의지에 대한 철학적 고찰. 운명을 바꿀 수 있는가?</p>
+                    <div class="card-meta">
+                        <span class="read-time"><i class="fas fa-clock"></i> 20분 읽기</span>
+                        <span class="category">사주 철학</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="read-btn" onclick="readArticle('destiny-freewill')">읽기</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- 페이지네이션 -->
+        <section class="pagination">
+            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </section>
+    </main>
+
+    <!-- 글 읽기 모달 -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content article-modal">
+            <span class="close">&times;</span>
+            <div id="articleContent" class="article-content">
+                <!-- 동적으로 콘텐츠가 로드됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단 푸터 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>수목선생의 사주 도서관</h4>
+                <p>전통 사주와 현대적 해석의 조화</p>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>📞 010-1234-5678</p>
+                <p>📧 saju@library.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>영업시간</h4>
+                <p>화-일: 10:00 - 19:00</p>
+                <p>월요일 휴무</p>
+            </div>
+            <div class="footer-section">
+                <h4>SNS</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-blog"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 수목선생의 사주 도서관. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/library.js') }}"></script>
+</body>
+</html>
+

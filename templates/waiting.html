@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 대기실 - 수목선생의 사주 도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/waiting.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 상단 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-container">
+                    <div class="logo">
+            <img src="{{ url_for('static', filename='img/로고1.png') }}" alt="수목선생의 사주이야기" class="logo-image">
+            <div class="logo-text">
+                <h1>수목선생의 사주이야기</h1>
+                <p>전문사주가의 글, 칼럼, 사주 지식</p>
+            </div>
+        </div>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/library">사주 도서관</a></li>
+                <li><a href="/reservation">사주 예약 & 주문</a></li>
+                <li><a href="/visit">방문 안내</a></li>
+                <li><a href="/about">소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="waiting-content">
+        <!-- 예약 정보 헤더 -->
+        <header class="waiting-header">
+            <div class="reservation-info">
+                <h1>사주 대기실</h1>
+                <div class="reservation-details">
+                    <div class="detail-item">
+                        <i class="fas fa-user"></i>
+                        <span>예약자: <strong id="customerName">김철수</strong></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>예약 시간: <strong id="reservationTime">2024년 1월 15일 오후 2시</strong></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>남은 대기 시간: <strong id="waitingTime">약 15분</strong></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 즐길거리 섹션 -->
+        <section class="entertainment-section">
+            <h2>대기 시간을 즐겁게</h2>
+            <div class="entertainment-grid">
+                <!-- 오늘의 운세 뽑기 -->
+                <div class="entertainment-card">
+                    <div class="card-header">
+                        <i class="fas fa-star"></i>
+                        <h3>오늘의 운세 뽑기</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>행운의 색, 숫자, 조언을 뽑아보세요</p>
+                        <button class="fortune-btn" onclick="drawFortune()">
+                            <i class="fas fa-dice"></i>
+                            운세 뽑기
+                        </button>
+                    </div>
+                    <div id="fortuneResult" class="fortune-result" style="display: none;">
+                        <!-- 결과가 여기에 표시됩니다 -->
+                    </div>
+                </div>
+
+                <!-- 사주 궁합 미니게임 -->
+                <div class="entertainment-card">
+                    <div class="card-header">
+                        <i class="fas fa-heart"></i>
+                        <h3>사주 궁합 게임</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>이름과 생년월일로 궁합을 확인해보세요</p>
+                        <div class="compatibility-form">
+                            <div class="form-row">
+                                <input type="text" id="name1" placeholder="첫 번째 이름" maxlength="10">
+                                <input type="date" id="birth1">
+                            </div>
+                            <div class="form-row">
+                                <input type="text" id="name2" placeholder="두 번째 이름" maxlength="10">
+                                <input type="date" id="birth2">
+                            </div>
+                            <button class="compatibility-btn" onclick="checkCompatibility()">
+                                <i class="fas fa-magic"></i>
+                                궁합 확인
+                            </button>
+                        </div>
+                        <div id="compatibilityResult" class="compatibility-result" style="display: none;">
+                            <!-- 결과가 여기에 표시됩니다 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 랜덤 사주 이야기 -->
+                <div class="entertainment-card">
+                    <div class="card-header">
+                        <i class="fas fa-book-open"></i>
+                        <h3>랜덤 사주 이야기</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>전문가의 흥미로운 사주 이야기를 읽어보세요</p>
+                        <button class="story-btn" onclick="getRandomStory()">
+                            <i class="fas fa-random"></i>
+                            이야기 보기
+                        </button>
+                    </div>
+                    <div id="storyResult" class="story-result" style="display: none;">
+                        <!-- 이야기가 여기에 표시됩니다 -->
+                    </div>
+                </div>
+
+                <!-- 전통 문양 색칠놀이 -->
+                <div class="entertainment-card">
+                    <div class="card-header">
+                        <i class="fas fa-palette"></i>
+                        <h3>전통 문양 색칠놀이</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>한국의 전통 문양을 색칠하고 기운을 해석해보세요</p>
+                        <div class="coloring-area">
+                            <canvas id="coloringCanvas" width="200" height="200"></canvas>
+                            <div class="color-palette">
+                                <button class="color-btn" data-color="#ff0000" style="background: #ff0000;"></button>
+                                <button class="color-btn" data-color="#00ff00" style="background: #00ff00;"></button>
+                                <button class="color-btn" data-color="#0000ff" style="background: #0000ff;"></button>
+                                <button class="color-btn" data-color="#ffff00" style="background: #ffff00;"></button>
+                                <button class="color-btn" data-color="#ff00ff" style="background: #ff00ff;"></button>
+                                <button class="color-btn" data-color="#00ffff" style="background: #00ffff;"></button>
+                            </div>
+                            <button class="interpret-btn" onclick="interpretColoring()">
+                                <i class="fas fa-eye"></i>
+                                기운 해석
+                            </button>
+                        </div>
+                        <div id="coloringResult" class="coloring-result" style="display: none;">
+                            <!-- 해석 결과가 여기에 표시됩니다 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 오늘의 명언 & 사주 상식 -->
+        <section class="wisdom-section">
+            <h2>오늘의 명언 & 사주 상식</h2>
+            <div class="wisdom-grid">
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <i class="fas fa-quote-left"></i>
+                        <h3>오늘의 명언</h3>
+                    </div>
+                    <div class="wisdom-content">
+                        <blockquote id="dailyQuote">
+                            "운명은 우리에게 주어진 카드이고, 자유의지는 그 카드를 어떻게 사용할지 결정하는 것입니다."
+                        </blockquote>
+                        <cite>- 수목선생</cite>
+                    </div>
+                </div>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>사주 상식</h3>
+                    </div>
+                    <div class="wisdom-content">
+                        <div id="dailyTip">
+                            <h4>오늘의 사주 상식</h4>
+                            <p>사주에서 목(木)의 기운이 강한 사람은 성장과 확장을 추구하는 성향이 있습니다. 새로운 도전을 두려워하지 않고, 창의적인 아이디어를 잘 떠올리는 특징이 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상담 준비 안내 -->
+        <section class="preparation-section">
+            <h2>상담 준비 안내</h2>
+            <div class="preparation-grid">
+                <div class="prep-item">
+                    <i class="fas fa-list-check"></i>
+                    <h3>상담 준비사항</h3>
+                    <ul>
+                        <li>구체적인 질문이나 고민사항 정리</li>
+                        <li>생년월일, 태어난 시간 확인</li>
+                        <li>태어난 곳 (시/도 단위)</li>
+                        <li>현재 상황에 대한 설명</li>
+                    </ul>
+                </div>
+                <div class="prep-item">
+                    <i class="fas fa-comments"></i>
+                    <h3>상담 진행 방식</h3>
+                    <ul>
+                        <li>사주 분석 및 해석 (20분)</li>
+                        <li>질문 및 답변 (30분)</li>
+                        <li>조언 및 해결방안 제시 (10분)</li>
+                        <li>추가 질문 및 마무리 (10분)</li>
+                    </ul>
+                </div>
+                <div class="prep-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>개인정보 보호</h3>
+                    <ul>
+                        <li>모든 상담 내용은 비밀보장</li>
+                        <li>녹음 및 촬영 금지</li>
+                        <li>상담 후 기록물 안전 폐기</li>
+                        <li>개인정보 수집 최소화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 하단 푸터 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>수목선생의 사주 도서관</h4>
+                <p>전통 사주와 현대적 해석의 조화</p>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>📞 010-1234-5678</p>
+                <p>📧 saju@library.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>영업시간</h4>
+                <p>화-일: 10:00 - 19:00</p>
+                <p>월요일 휴무</p>
+            </div>
+            <div class="footer-section">
+                <h4>SNS</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-blog"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 수목선생의 사주 도서관. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/waiting.js') }}"></script>
+</body>
+</html>
+

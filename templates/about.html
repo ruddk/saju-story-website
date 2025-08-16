@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 - 수목선생의 사주 도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 상단 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+                    <div class="logo">
+            <img src="{{ url_for('static', filename='img/로고1.png') }}" alt="수목선생의 사주이야기" class="logo-image">
+            <div class="logo-text">
+                <h1>수목선생의 사주이야기</h1>
+                <p>전문사주가의 글, 칼럼, 사주 지식</p>
+            </div>
+        </div>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/library">사주 도서관</a></li>
+                <li><a href="/reservation">사주 예약 & 주문</a></li>
+                <li><a href="/visit">방문 안내</a></li>
+                <li><a href="/about" class="active">소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="about-content">
+        <!-- 페이지 헤더 -->
+        <header class="about-header">
+            <div class="header-content">
+                <h1>수목선생 소개</h1>
+                <p>전통 사주와 현대적 해석의 조화를 추구하는 전문 사주가</p>
+            </div>
+        </header>
+
+        <!-- 사주가 소개 -->
+        <section class="introduction-section">
+            <div class="introduction-container">
+                <div class="profile-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                        <p>수목선생 사진</p>
+                    </div>
+                </div>
+                <div class="profile-content">
+                    <h2>수목선생 (樹木先生)</h2>
+                    <p class="subtitle">전통 사주 전문가 | 현대적 해석의 선구자</p>
+                    
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h3>학력 및 자격</h3>
+                                <p>서울대학교 철학과 졸업</p>
+                                <p>전통사주연구원 수료</p>
+                                <p>사주명리학회 정회원</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>경력</h3>
+                                <p>20년 이상의 사주 상담 경력</p>
+                                <p>전통사주연구원 연구위원</p>
+                                <p>다수의 사주 관련 저서 출간</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h3>수상 및 인정</h3>
+                                <p>전통문화진흥원 우수상</p>
+                                <p>사주명리학회 학술상</p>
+                                <p>고객만족도 최우수상</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상담 철학 -->
+        <section class="philosophy-section">
+            <h2>상담 철학</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>전통과 현대의 조화</h3>
+                    <p>고전 사주 이론을 바탕으로 현대인의 삶에 맞는 실용적인 해석을 제공합니다. 단순한 운세가 아닌, 인생의 방향을 제시하는 지혜로운 조언을 드립니다.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>따뜻한 마음으로</h3>
+                    <p>모든 상담은 따뜻한 마음으로 진행됩니다. 고민하는 분들의 마음을 이해하고, 함께 해결책을 찾아가는 과정을 중시합니다.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>깊이 있는 분석</h3>
+                    <p>표면적인 운세가 아닌, 사주의 근본 원리를 바탕으로 한 깊이 있는 분석을 제공합니다. 단순한 예측이 아닌, 인생의 패턴을 이해하는 데 도움을 드립니다.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>성장을 돕는 조언</h3>
+                    <p>운명을 바꾸는 것은 불가능하지만, 운명을 이해하고 그 안에서 최선을 다하는 방법을 알려드립니다. 개인의 성장과 발전을 돕는 실질적인 조언을 제공합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 전문 분야 -->
+        <section class="expertise-section">
+            <h2>전문 분야</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>직장 & 사업</h3>
+                    <ul>
+                        <li>직장에서의 인간관계</li>
+                        <li>승진 및 전직 타이밍</li>
+                        <li>사업 성공 요인 분석</li>
+                        <li>파트너십 및 협력 관계</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>연애 & 결혼</h3>
+                    <ul>
+                        <li>연애 타이밍 및 운세</li>
+                        <li>배우자와의 궁합</li>
+                        <li>결혼 적령기 분석</li>
+                        <li>가족 관계 조화</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>학업 & 자격증</h3>
+                    <ul>
+                        <li>학업 성취도 향상</li>
+                        <li>자격증 취득 타이밍</li>
+                        <li>전공 선택 가이드</li>
+                        <li>시험 운세 분석</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>건강 & 정신</h3>
+                    <ul>
+                        <li>건강 관리 포인트</li>
+                        <li>스트레스 해소 방법</li>
+                        <li>정신적 안정 도모</li>
+                        <li>생활 습관 개선</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 저서 및 활동 -->
+        <section class="publications-section">
+            <h2>저서 및 활동</h2>
+            <div class="publications-container">
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <div class="book-cover">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="book-info">
+                            <h3>사주로 보는 인생의 지도</h3>
+                            <p class="year">2023년 출간</p>
+                            <p>전통 사주 이론을 현대적으로 해석한 베스트셀러. 많은 독자들에게 인생의 방향을 제시하는 지침서로 사랑받고 있습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div class="book-cover">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="book-info">
+                            <h3>음양오행의 현대적 이해</h3>
+                            <p class="year">2022년 출간</p>
+                            <p>고전 철학의 핵심인 음양오행을 현대인의 삶에 적용하는 방법을 담은 실용적인 가이드북입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-card">
+                        <div class="book-cover">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="book-info">
+                            <h3>사주 상담 사례집</h3>
+                            <p class="year">2021년 출간</p>
+                            <p>20년간의 상담 경험을 바탕으로 한 실제 사례들을 통해 사주의 실용적 활용법을 보여줍니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activities">
+                    <h3>주요 활동</h3>
+                    <ul>
+                        <li>전통사주연구원 정기 강의</li>
+                        <li>사주명리학회 학술대회 발표</li>
+                        <li>문화재청 전통문화 교육 프로그램 참여</li>
+                        <li>다수의 라디오 및 TV 프로그램 출연</li>
+                        <li>온라인 사주 강의 및 워크샵 진행</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 고객 후기 -->
+        <section class="testimonials-section">
+            <h2>고객 후기</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"수목선생님의 상담을 받고 인생의 방향이 명확해졌습니다. 단순한 운세가 아닌, 실질적인 조언을 받을 수 있어서 정말 도움이 되었어요."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>김○○ (30대, 회사원)</strong>
+                        <span>2024년 1월</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"20년간 여러 사주가를 찾아봤지만, 수목선생님만큼 깊이 있고 따뜻한 상담을 받은 적이 없습니다. 정말 감사합니다."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>이○○ (40대, 자영업자)</strong>
+                        <span>2023년 12월</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"사업을 시작하려고 고민하던 중 상담을 받았는데, 정말 현실적이고 실용적인 조언을 받을 수 있었습니다. 지금은 성공적으로 사업을 운영하고 있어요."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>박○○ (30대, 창업가)</strong>
+                        <span>2023년 11월</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연락처 및 상담 신청 -->
+        <section class="contact-section">
+            <h2>상담 신청</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>수목선생과 함께하는 사주 상담</h3>
+                    <p>전통 사주의 지혜를 현대적으로 해석하여, 여러분의 인생에 실질적인 도움을 드리겠습니다.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>010-1234-5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>saju@library.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>서울시 강남구 테헤란로 123</span>
+                        </div>
+                    </div>
+                    
+                    <div class="consultation-types">
+                        <h4>상담 방법</h4>
+                        <ul>
+                            <li>방문 상담 (추천)</li>
+                            <li>전화 상담</li>
+                            <li>영상 상담 (Zoom, Skype)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>상담 문의</h3>
+                    <form id="aboutContactForm">
+                        <div class="form-group">
+                            <input type="text" id="aboutName" placeholder="이름" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="aboutPhone" placeholder="연락처" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="aboutType" required>
+                                <option value="">상담 유형 선택</option>
+                                <option value="career">직장/사업</option>
+                                <option value="love">연애/결혼</option>
+                                <option value="study">학업/자격증</option>
+                                <option value="health">건강/정신</option>
+                                <option value="general">전체 운세</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="aboutMessage" placeholder="상담하고 싶은 내용을 간단히 적어주세요" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            상담 문의하기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 하단 푸터 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>수목선생의 사주 도서관</h4>
+                <p>전통 사주와 현대적 해석의 조화</p>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p>📞 010-1234-5678</p>
+                <p>📧 saju@library.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>영업시간</h4>
+                <p>화-일: 10:00 - 19:00</p>
+                <p>월요일 휴무</p>
+            </div>
+            <div class="footer-section">
+                <h4>SNS</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-blog"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 수목선생의 사주 도서관. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+</body>
+</html>
+
